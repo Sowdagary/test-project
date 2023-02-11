@@ -6,17 +6,23 @@ import { Stack, Grid, Typography, Switch } from "@mui/material";
 import ProductCard from "@/components/shared/product-card";
 import { productCardsData } from "./data";
 import Link from "next/link";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { toggleCardMode } from "@/store/slices/card-mode";
 
 interface IProductListingContent {}
 
-export type IProductsType = "vertical" | "horizontal";
-
 const ProductListingContent: React.FC<IProductListingContent> = () => {
-  // State type products
-  const [productsType, setProductsType] =
-    React.useState<IProductsType>("vertical");
+  // dispatcher
+  const dispatcher = useDispatch();
+  // Getting card mode from redux
+  const cardMode = useSelector((state: any) => state.cardMode.mode);
   // if product type
-  const isHorizontal = productsType == "horizontal";
+  const isHorizontal = cardMode == "horizontal";
+  // handle change toggle button
+  const handleChangeCardMode = (mode: boolean) => {
+    dispatcher(toggleCardMode(mode ? "vertical" : "horizontal"))
+  }
 
   return (
     <Stack spacing={6}>
@@ -30,9 +36,7 @@ const ProductListingContent: React.FC<IProductListingContent> = () => {
         <Switch
           sx={{ mx: 2 }}
           defaultChecked
-          onChange={(e) =>
-            setProductsType(e.target.checked ? "vertical" : "horizontal")
-          }
+          onChange={(e) => handleChangeCardMode(e.target.checked)}
         />
         <Typography variant="bodyBold">horizontal</Typography>
       </Stack>
@@ -48,7 +52,7 @@ const ProductListingContent: React.FC<IProductListingContent> = () => {
             key={data.id}
           >
             <Link href={`/products/${data.id}`}>
-              <ProductCard item={data} type={productsType} />
+              <ProductCard item={data} type={cardMode} />
             </Link>
           </Grid>
         ))}

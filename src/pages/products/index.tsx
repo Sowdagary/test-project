@@ -1,15 +1,11 @@
 // Built-in import
 import * as React from "react";
 // External import
-import { Stack } from "@mui/material";
+import { Stack, Container } from "@mui/material";
 //Internal Import
-import { useRouter } from "next/router";
+import ProductListingContent from "@/components/pages/products";
 
-export default function Home() {
-  const router = useRouter()
-  React.useEffect(() => {
-    router.push("/products")
-  }, [])
+export default function ProductListing() {
   return (
     <Stack
       sx={{
@@ -20,7 +16,9 @@ export default function Home() {
         py: 3,
       }}
     >
-      Home Page
+      <Container maxWidth="xl">
+        <ProductListingContent />
+      </Container>
     </Stack>
   );
 }
