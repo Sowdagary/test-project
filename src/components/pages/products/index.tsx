@@ -24,8 +24,6 @@ const ProductListingContent: React.FC<IProductListingContent> = () => {
     dispatcher(toggleCardMode(mode ? "vertical" : "horizontal"));
   };
 
-  console.log(cardMode);
-
   return (
     <Stack spacing={6}>
       <Stack

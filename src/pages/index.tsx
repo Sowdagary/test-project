@@ -18,7 +18,7 @@ export default function Home() {
         color: (t) => t.palette.common.black,
         direction: "rtl",
         py: 3,
-      }}
+      }}  
     >
       Home Page
     </Stack>
