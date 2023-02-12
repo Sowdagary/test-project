@@ -21,8 +21,10 @@ const ProductListingContent: React.FC<IProductListingContent> = () => {
   const isHorizontal = cardMode == "horizontal";
   // handle change toggle button
   const handleChangeCardMode = (mode: boolean) => {
-    dispatcher(toggleCardMode(mode ? "vertical" : "horizontal"))
-  }
+    dispatcher(toggleCardMode(mode ? "vertical" : "horizontal"));
+  };
+
+  console.log(cardMode);
 
   return (
     <Stack spacing={6}>
@@ -35,7 +37,7 @@ const ProductListingContent: React.FC<IProductListingContent> = () => {
         <Typography variant="bodyBold">vertical</Typography>
         <Switch
           sx={{ mx: 2 }}
-          defaultChecked
+          checked={!isHorizontal}
           onChange={(e) => handleChangeCardMode(e.target.checked)}
         />
         <Typography variant="bodyBold">horizontal</Typography>
