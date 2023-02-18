@@ -2,14 +2,19 @@
 import * as React from "react";
 // External import
 import { Stack } from "@mui/material";
-//Internal Import
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 
 export default function Home() {
-  const router = useRouter()
+  // Getting translation object
+  const { t } = useTranslation(["common"]);
+  // Getting router
+  const router = useRouter();
+  // Push to products page
   React.useEffect(() => {
-    router.push("/products")
-  }, [])
+    router.push("/products");
+  }, []);
+
   return (
     <Stack
       sx={{
@@ -19,8 +24,10 @@ export default function Home() {
         direction: "rtl",
         py: 3,
       }}
+      alignItems="center"
+      justifyContent="center"
     >
-      Home Page
+      {t("common:home_page")}
     </Stack>
   );
 }

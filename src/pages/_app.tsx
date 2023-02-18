@@ -1,5 +1,4 @@
 import "../i18n/i18n";
-import "../../styles/globals.css";
 import "@/extends/extendedPrototypes";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -13,10 +12,10 @@ import { store } from "@/store";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
-    <ThemeProvider theme={createMyTheme()}>
-      <CssBaseline />
-      <Component {...pageProps} />
-    </ThemeProvider>
+      <ThemeProvider theme={createMyTheme()}>
+        <CssBaseline />
+        <Component {...pageProps} />
+      </ThemeProvider>
     </Provider>
   );
 }

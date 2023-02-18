@@ -3,6 +3,10 @@
  */
 const CssBaselineOverrides = {
   styleOverrides: `
+    a {
+      color: black;
+      text-decoration: none;
+    }
     body {
       font-family: Dirooz FD;
       color: black;

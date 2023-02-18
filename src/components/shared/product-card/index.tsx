@@ -1,13 +1,16 @@
 // Built-in import
 import * as React from "react";
+// External import
+import { useSelector } from "react-redux";
 // Internal import
 import ProductCardVertical from "./vertical";
 import ProductCardHorizontal from "./horizontal";
 
 interface IProductCard {
-  type?: "horizontal" | "vertical";
   item: IProductCardItem;
 }
+
+export type cardMode = "vertical" | "horizontal";
 
 export interface IProductCardItem {
   image: string;
@@ -17,7 +20,10 @@ export interface IProductCardItem {
   color: string;
 }
 
-const ProductCard: React.FC<IProductCard> = ({ type = "vertical", item }) => {
+const ProductCard: React.FC<IProductCard> = ({ item }) => {
+  // Getting card mode from redux
+  const type: cardMode = useSelector((state: any) => state.cardMode.mode);
+
   return type == "horizontal" ? (
     <ProductCardHorizontal item={item} />
   ) : (
