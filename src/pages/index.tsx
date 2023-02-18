@@ -4,6 +4,7 @@ import * as React from "react";
 import { Stack } from "@mui/material";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
+import { routes } from "@/constants/routes";
 
 export default function Home() {
   // Getting translation object
@@ -12,7 +13,7 @@ export default function Home() {
   const router = useRouter();
   // Push to products page
   React.useEffect(() => {
-    router.push("/products");
+    router.push(routes.products.index);
   }, []);
 
   return (

@@ -16,10 +16,12 @@ let persister = persistStore(store);
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
-      <ThemeProvider theme={createMyTheme()}>
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <PersistGate persistor={persister}>
+        <ThemeProvider theme={createMyTheme()}>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </PersistGate>
     </Provider>
   );
 }

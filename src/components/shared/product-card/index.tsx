@@ -5,19 +5,10 @@ import { useSelector } from "react-redux";
 // Internal import
 import ProductCardVertical from "./vertical";
 import ProductCardHorizontal from "./horizontal";
+import { cardMode, IProductCardItem } from "@/types/products";
 
 interface IProductCard {
   item: IProductCardItem;
-}
-
-export type cardMode = "vertical" | "horizontal";
-
-export interface IProductCardItem {
-  image: string;
-  title: string;
-  rating: number;
-  price: string | number;
-  color: string;
 }
 
 const ProductCard: React.FC<IProductCard> = ({ item }) => {
