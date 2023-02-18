@@ -38,7 +38,7 @@ const ProductListingContent: React.FC<IProductListingContent> = () => {
         <Typography variant="bodyBold">{t("common:vertical")}</Typography>
         <Switch
           sx={{ mx: 2 }}
-          defaultChecked
+          checked={!isHorizontal}
           onChange={(e) => handleChangeCardMode(e.target.checked)}
         />
         <Typography variant="bodyBold">{t("common:horizontal")}</Typography>

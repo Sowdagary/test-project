@@ -8,6 +8,10 @@ import { createMyTheme } from "@/mui";
 import React from "react";
 import { Provider } from "react-redux";
 import { store } from "@/store";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore } from "redux-persist";
+
+let persister = persistStore(store);
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
